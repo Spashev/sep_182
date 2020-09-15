@@ -1,0 +1,18 @@
+{% extends 'post/index.html' %} 
+
+{% block title %}
+    {{post.title}}
+{% endblock %}
+
+{% block content %}
+    <div class="card m-4 p-2">
+        <div class="card-title display-4 ml-3">
+            {{ post.title }}
+        </div>
+        <div class="card-body">
+            <p>{{ post.description }}</p>
+            <small class="float-right">{{ post.author.first_name }}</small><br>
+            <small class="float-right">{{ post.created_at }}</small>
+        <div>
+    </div>    
+{% endblock %}
