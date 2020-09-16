@@ -9,6 +9,6 @@ class Post(models.Model):
     ]
     title = models.CharField(max_length=150, verbose_name="Название поста")
     description = models.TextField(verbose_name="Описание поста")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
     status = models.CharField(max_length=50, choices=IS_PUBLISHED, default="unpub")
     created_at = models.DateTimeField(verbose_name="Дата создание", auto_now_add=timezone.now())

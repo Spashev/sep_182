@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block content %}
+<a href="/post/create" class="btn btn-outline-primary mb-2 float-right"><i class="fa fa-plus mr-2"></i>post</a>
 <div class="row">
     {% for post in posts %}
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
             <div class="card p-3">
                 <div class="card-title">
                     <h4>{{ post.title }}</h4>
