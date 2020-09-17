@@ -8,7 +8,7 @@ New post
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
                         {{form.title}}
@@ -18,6 +18,9 @@ New post
                     </div>
                     <div class="form-group">
                         {{form.author}}
+                    </div>
+                    <div class="form-group">
+                        {{form.image}}
                     </div>
                     <div class="form-group">
                         {{form.status}}

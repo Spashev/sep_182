@@ -9,6 +9,7 @@ class PostForm(ModelForm):
         self.fields['description'].widget.attrs['class'] = 'form-control'
         self.fields['author'].widget.attrs['class'] = 'form-control'
         self.fields['status'].widget.attrs['class'] = 'form-control'
+        self.fields['image'].widget.attrs['class'] = 'form-control'
 
         self.fields['title'].widget.attrs['placeholder'] = 'Post title ..'
         self.fields['description'].widget.attrs['placeholder'] = 'Deescriptions ..'
