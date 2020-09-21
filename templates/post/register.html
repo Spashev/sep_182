@@ -29,6 +29,15 @@
                         <button type="submit" class="btn btn-success float-right">Register</button>
                     </div>
                 </form>
+                <div class="form-group">
+                    {% if form.errors %}
+                        <ol>
+                        {% for error in form.errors %}
+                            <li><strong>{{ error|escape }}</strong></li>
+                        {% endfor %}
+                        </ol>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

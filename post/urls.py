@@ -10,5 +10,7 @@ urlpatterns = [
     path('posts/', posts, name="posts"),
     path('post/create', create, name="create"),
     path('post/<int:id>', post_show, name="post.show"),
+    path('post/<int:id>/update', post_update, name="post.update"),
+    path('post/<int:id>/delete', post_delete, name="post.delete"),
     path('post/<slug:slug>', post_filter, name="post.tag")
 ]

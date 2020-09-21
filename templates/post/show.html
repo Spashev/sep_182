@@ -8,10 +8,14 @@
     <div class="card m-4 p-2">
         <div class="card-title display-4 ml-3">
             {{ post.title }}
+            <div class="btn-group float-right mt-3">
+                <a href="{% url 'post.update' id=post.id %}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                <a href="{% url 'post.delete' id=post.id %}" class="btn btn-danger"><i class="fa fa-times"></i></a>
+            </div>
         </div>
         <div class="card-body">
             <p>{{ post.description }}</p>
-            <small class="float-right">{{ post.author.first_name }}</small><br>
+            <small class="float-right">{{ post.author.username }}</small><br>
             <small class="float-right">{{ post.created_at }}</small>
         <div>
     </div>    

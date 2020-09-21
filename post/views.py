@@ -3,8 +3,9 @@ from post.models import Post, Tag
 from post.forms import PostForm, UserForm
 
 #Login
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+
 
 def loginPage(request):
     if request.method == "POST":
@@ -17,19 +18,20 @@ def loginPage(request):
     return render(request, 'post/login.html')
 
 def registerPage(request):
+    form = UserForm()
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
-    form = UserForm()
     context =  {
         'form': form
     }
     return render(request, 'post/register.html', context=context)
 
 def logoutPage(request):
-    pass
+    logout(request)
+    return redirect('login')
 
 @login_required(login_url="login")
 def index(request):
@@ -65,3 +67,22 @@ def post_filter(request, slug):
 def post_show(reqeust, id):
     post = Post.objects.get(pk=id)
     return render(reqeust, 'post/show.html', {'post':post})
+
+@login_required(login_url="login")
+def post_update(request, id):
+    post = Post.objects.get(id=id)
+    if request.method == "POST":
+        print(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('posts')
+    form = PostForm(instance=post)
+    return render(request, 'post/post_update_form.html', {'form': form})
+
+@login_required(login_url="login")
+def post_delete(request, id):
+    post = Post.objects.get(pk=id)
+    post.delete()
+    return redirect('posts')
